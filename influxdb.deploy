@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "InfluxDB vhost being set to $VHOST"
+
+# Build storage container
+docker run -d -v /data --name=influxdb-storage busybox:latest
+
+# Build application container
+docker run \
+  -d \
+  -p 8083:8083 \
+  -p 8086:8086 \
+  -e VIRTUAL_HOST=${VHOST} \
+  -e VIRTUAL_PORT=8083 \
+  --name=influxdb \
+  --volumes-from influxdb-storage \
+  tutum/influxdb

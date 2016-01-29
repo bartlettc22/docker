@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker ps -a -f "name=influxdb*"; docker stop $(docker ps -a -q -f "name=influxdb*"); docker rm $(docker ps -a -q -f "name=influxdb*")
