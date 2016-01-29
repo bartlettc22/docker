@@ -231,7 +231,8 @@ start_controller() {
     if [ $ENABLE_TLS = 1 ]; then
         TLS_OPTS="--tls-ca-cert $SSL_CA_CERT --tls-cert=$SSL_CERT --tls-key=$SSL_KEY --shipyard-tls-ca-cert=$SSL_CA_CERT --shipyard-tls-cert=$SSL_CERT --shipyard-tls-key=$SSL_KEY"
     fi
-
+    
+    echo "Shipyard vhost being set to $SHIPYARD_VHOST"
     ID=$(docker run \
         -ti \
         -d \
