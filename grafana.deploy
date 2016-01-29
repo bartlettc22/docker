@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Shipyard vhost being set to $VHOST"
+
+# Build storage container for grafana
+docker run -d -v /var/lib/grafana --name=grafana-storage busybox:latest
+
+# Build grafana
+docker run \
+  -d \
+  -p 3000:3000 \
+  -e VIRTUAL_HOST=${VHOST} \
+  -e VIRTAL_PORT=3000 \
+  --name=grafana \
+  --volumes-from grafana-storage \
+  grafana/grafana
