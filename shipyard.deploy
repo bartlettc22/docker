@@ -242,7 +242,7 @@ start_controller() {
         --link $PREFIX-swarm-manager:swarm \
         -p $SHIPYARD_PORT:$SHIPYARD_PORT \
         -e VIRTUAL_HOST=$SHIPYARD_VHOST \
-        -e VIRTAL_PORT=$SHIPYARD_PORT \
+        -e VIRTUAL_PORT=$SHIPYARD_PORT \
         --volumes-from=$PREFIX-certs \
         $IMAGE \
         --debug \
