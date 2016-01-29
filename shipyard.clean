@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker ps -a -f "name=shipyard*"; docker stop $(docker ps -a -q -f "name=shipyard*"); docker rm $(docker ps -a -q -f "name=shipyard*")

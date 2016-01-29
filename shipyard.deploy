@@ -29,7 +29,7 @@ CERT_PATH="/etc/shipyard"
 PROXY_PORT=${PROXY_PORT:-2375}
 SWARM_PORT=3375
 SHIPYARD_PROTOCOL=http
-SHIPYARD_PORT=${PORT:-8080}
+SHIPYARD_PORT=${PORT:-8081}
 SHIPYARD_IP=${IP}
 SHIPYARD_VHOST=${VHOST}
 DISCOVERY_BACKEND=etcd
@@ -240,8 +240,8 @@ start_controller() {
         --link $PREFIX-rethinkdb:rethinkdb \
         --link $PREFIX-swarm-manager:swarm \
         -p $SHIPYARD_PORT:$SHIPYARD_PORT \
-        -e VIRTUAL_HOST=$SHIPYARD_VHOST
-        -e VIRTAL_PORT=$SHIPYARD_PORT
+        -e VIRTUAL_HOST=$SHIPYARD_VHOST \
+        -e VIRTAL_PORT=$SHIPYARD_PORT \
         --volumes-from=$PREFIX-certs \
         $IMAGE \
         --debug \
